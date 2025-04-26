@@ -37,8 +37,8 @@ const Chat: React.FC = () => {
   useEffect(() => {
     if (lastTranscription) {
       setMessages(prev => {
-       // To this alternative implementation:
-const lastMessage = [...prev].reverse().find((m: Message) => m.type === 'text');  
+       // Using find with explicit type annotation
+       const lastMessage = [...prev].reverse().find((m: Message) => m.type === 'text');  
         
         // Check if the last text message is from the same sender and is incomplete
         const shouldUpdateLast = lastMessage && 
@@ -136,7 +136,7 @@ const lastMessage = [...prev].reverse().find((m: Message) => m.type === 'text');
         <Input
           value={inputText}
           onChange={handleInputChange}
-          onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
+          onKeyPress={(e: React.KeyboardEvent) => e.key === "Enter" && handleSendMessage()}
           placeholder="Type a message..."
         />
         <Button onClick={handleSendMessage}>Send</Button>
