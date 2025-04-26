@@ -37,7 +37,8 @@ const Chat: React.FC = () => {
   useEffect(() => {
     if (lastTranscription) {
       setMessages(prev => {
-        const lastMessage = prev.findLast(m => m.type === 'text'); // Find the last text message
+       // To this alternative implementation:
+const lastMessage = [...prev].reverse().find((m: Message) => m.type === 'text');  
         
         // Check if the last text message is from the same sender and is incomplete
         const shouldUpdateLast = lastMessage && 
