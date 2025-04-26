@@ -18,7 +18,7 @@ const ScreenShare: React.FC = () => {
   const audioContextRef = useRef<AudioContext | null>(null);
   const audioStreamRef = useRef<MediaStream | null>(null);
   const audioWorkletNodeRef = useRef<AudioWorkletNode | null>(null);
-  const setupInProgressRef = useRef(false);
+  // Removed the unused ref: setupInProgressRef
   const [isSharing, setIsSharing] = useState(false);
   const [audioLevel, setAudioLevel] = useState(0);
   const [messages, setMessages] = useState<ChatMessage[]>([{
